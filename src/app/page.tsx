@@ -1,10 +1,10 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Footer } from "@/components/footer"
 import { MusicList } from "@/components/musicList"
-import Image from "next/image"
+import { Main } from "@/components/main"
 
 import { Search, Library, History } from "lucide-react"
-import { Main } from "@/components/main"
+import Loading from "./loading"
 
 export default async function Home() {
 
@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
 
-    <div className="flex flex-col justify-between min-h-screen bg-zinc-800">
+    <div className="flex flex-col justify-between min-h-screen bg-zinc-800" >
       <div className="min-h-12 flex items-center justify-end  pr-4 pt-2">
         <Avatar className="cursor-pointer">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -36,6 +36,6 @@ export default async function Home() {
         <Main />
       </div>
       <Footer />
-    </div>
+    </div >
   )
 }
