@@ -4,12 +4,27 @@ import Image from "next/image"
 import { IMusicProps } from "@/types"
 import { twMerge } from "tailwind-merge"
 import { Play } from "lucide-react"
+import { useMusic } from "@/context/musicContext"
 
 export const MusicAside: React.FC<IMusicProps> = ({ music, className, ...otherPros }) => {
+
+    const { audioRef, isPlaying, setIsPlaying } = useMusic()
 
     if (music !== undefined) {
 
         const { id, cover, artists, name } = music
+
+        const playSong = () => {
+
+            setIsPlaying(!isPlaying)
+
+            if (audioRef.current) {
+
+                isPlaying
+                    ? audioRef.current.pause()
+                    : audioRef.current.play()
+            }
+        }
 
         return (
             <div
@@ -33,7 +48,7 @@ export const MusicAside: React.FC<IMusicProps> = ({ music, className, ...otherPr
                     </span>
                 </div>
                 <Play
-                    onClick={() => alert(name)}
+                    onClick={playSong}
                     className="mr-4 hidden group-hover:flex hover:text-green-400 hover:scale-105 duration-300"
                 />
             </div>

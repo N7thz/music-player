@@ -6,10 +6,11 @@ import { useMusic } from "@/context/musicContext"
 
 export const MusicList = () => {
 
-    const { musics, music: currentMusic, setMusic } = useMusic()
+    const { musics, music: currentMusic, setMusic, setIsPlaying } = useMusic()
 
     const changeCurrentMusic = (music: IMusic) => {
 
+        setIsPlaying(false)
         setMusic(music)
     }
 

@@ -6,7 +6,9 @@ import Image from "next/image"
 import { Search, Library, History } from "lucide-react"
 import { Main } from "@/components/main"
 
-export default function Home() {
+export default async function Home() {
+
+  await new Promise(resolve => setTimeout(resolve, 2000))
 
   return (
 
@@ -17,7 +19,7 @@ export default function Home() {
           <AvatarFallback>BE</AvatarFallback>
         </Avatar>
       </div>
-      <div className="flex min-h-[60vw] gap-4 p-4">
+      <div className="flex  gap-4 p-4">
 
         <aside className="flex flex-col items-center justify-between w-4/12 
         bg-zinc-700 rounded-lg">

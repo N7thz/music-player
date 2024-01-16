@@ -8,6 +8,7 @@ import {
     createContext,
     useContext,
     useEffect,
+    useRef,
     useState
 } from "react"
 
@@ -15,9 +16,13 @@ const MusicContext = createContext({} as IMusicContextProps)
 
 export function MusicProvider({ children }: { children: ReactNode }) {
 
+    const { musics: musicsResponse, music: musicResponse } = Usefetch()
+
+
+    const audioRef = useRef<HTMLAudioElement | null>(null)
     const [musics, setMusics] = useState<IMusic[]>()
     const [music, setMusic] = useState<IMusic>()
-    const { musics: musicsResponse, music: musicResponse } = Usefetch()
+    const [isPlaying, setIsPlaying] = useState<boolean>(false)
 
     useEffect(() => {
 
@@ -27,7 +32,12 @@ export function MusicProvider({ children }: { children: ReactNode }) {
 
     return (
 
-        <MusicContext.Provider value={{ musics, setMusics, music, setMusic }}>
+        <MusicContext.Provider value={{
+            audioRef,
+            musics, setMusics,
+            music, setMusic, 
+            isPlaying, setIsPlaying
+        }}>
             {children}
         </MusicContext.Provider>
     )
