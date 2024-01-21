@@ -2,10 +2,6 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { IMusic } from "@/types"
 
-const api = axios.create({
-    baseURL: "http://localhost:3000"
-})
-
 export function Usefetch() {
 
     const [musics, setMusics] = useState<IMusic[]>()
@@ -13,7 +9,7 @@ export function Usefetch() {
 
     const getMusics = async () => {
 
-        await api.get("/api/musics")
+        await axios.get("/api/musics")
             .then(response => {
 
                 setMusics(response.data.musics)
