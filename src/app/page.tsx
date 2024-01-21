@@ -1,10 +1,11 @@
+'use client'
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Footer } from "@/components/footer"
 import { MusicList } from "@/components/musicList"
 import { Main } from "@/components/main"
 
 import { Search, Library, History } from "lucide-react"
-import Loading from "./loading"
 
 export default async function Home() {
 
